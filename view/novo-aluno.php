@@ -5,7 +5,7 @@
     if(isset($_POST['name']) && !empty($_POST['name']) && empty($_GET['id'])) {
         $result = $aluno->insertStudent(json_encode($_POST));
         if($result) {
-            header("Location: ?p=alunos&mensagem=Sucesso&tipo=success");
+            header("Location: ?p=alunos&mensagem=Dados salvos com sucesso&tipo=success");
         } else {
             header("Location: ?p=alunos&mensagem=Ocorreu um erro&tipo=error");
         }
@@ -14,7 +14,7 @@
     if(isset($_POST['name']) && isset($_GET['id'])) {
         $result = $aluno->updateStudent(json_encode($_POST), $_GET['id']);
         if($result) {
-            header("Location: ?p=alunos&mensagem=Sucesso ao editar aluno&tipo=success");
+            header("Location: ?p=alunos&mensagem=Dados alterados com sucesso&tipo=success");
         } else {
             header("Location: ?p=alunos&mensagem=Ocorreu um erro&tipo=error");
         }
@@ -49,9 +49,10 @@
                     <input type="email" autofocus name="email" id="email" class="form-control" required value="<?= $obj->email ?? null; ?>">
                 </div>
                 <div class="col-md-3">
-                    <label for="">Teleone: </label>
+                    <label for="">Telefone: </label>
                     <input type="text" autofocus name="phone" id="phone" class="form-control" required value="<?= $obj->phone ?? null; ?>">
                 </div>
+                <br>
                 <div class="col-md-3">
                     <label for="">Status: </label>
                     <select name="status" id="status" class="form-control" required >
@@ -69,7 +70,7 @@
             </div>
             <div class="row mt-3">
                 <div class="col-md-2">
-                    <input type="submit" class="btn btn-primary"value="Enviar">
+                    <input type="submit" class="btn btn-primary"value="Salvar">
                 </div>
             </div>
         </form>

@@ -12,7 +12,6 @@
     }
 ?>
 
-
     <h1 class="mt-5">eCursos - Console de Gerenciamento</h1>
 
     <div class="content-login justify-content-center">

@@ -1,1 +1,1 @@
-<h1>Página não encontrada</h1>
+<h1>OPS! Página não encontrada! =(</h1>

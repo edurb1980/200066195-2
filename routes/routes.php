@@ -10,7 +10,6 @@
         'logout'
     ];
 
-
     function setPage() {
         $page = 'alunos';
         if(isset($_GET['p']) && !empty($_GET['p'])) {
