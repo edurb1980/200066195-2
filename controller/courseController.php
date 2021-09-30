@@ -5,14 +5,14 @@ if(isset($_GET['acao']) && !empty($_GET['acao'])) {
     $action = $_GET['acao'];
     $id = $_GET['id'];
     if($action == 'remover') {
-        destroyCourse($id);
+        apagaCurso($id);
     }
 }
 
-function destroyCourse($id)
+function apagaCurso($id)
 {
     $curso = new Courses();
-    $result = $curso->excluirCourse($id);
+    $result = $curso->deleteCourse($id);
     if($result) {
         return header("Location: ../?p=cursos&mensagem=Curso removido com sucesso!&tipo=success");
     } else {

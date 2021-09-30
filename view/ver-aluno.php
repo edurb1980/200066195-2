@@ -6,14 +6,14 @@
         $obj = $aluno->getStudent($id);
         $obj = json_decode($obj);
         $created_at = new DateTime($obj->created_at);
-        $updated_at = new DateTime($obj->updated_at);($obj->created_at);
+        $updated_at = new DateTime($obj->updated_at);/*($obj->created_at);*/
         if(empty($obj)) {
             header("Location: ?p=alunos");
         }
     }
 ?>
 
-<h1>Aluno <?= $obj->name; ?></h1>
+<h1>Aluno > <?= $obj->name; ?></h1>
 
 <div class="content card">
     <div class="card-body">
@@ -28,7 +28,7 @@
             </div>
             <div class="col-md-3">
                 <label for="">Senha: </label>
-                <p><?= $obj->password; ?></p>
+                <p>*********</p>
             </div>
             <div class="col-md-3">
                 <label for="">Telefone: </label>

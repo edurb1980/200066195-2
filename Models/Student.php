@@ -11,29 +11,23 @@
         private $created_at;
         private $updated_at;
 
-        public function __construct() 
-        {
+        public function __construct() {
             parent::__construct();
         }
 
-        // implementar geters e seters
-
-        private function setDados($dados) 
-        {
+        private function setDados($dados) {
             $date = new DateTime('America/Sao_Paulo');
             $objDados = json_decode($dados);
             $this->name = $objDados->name;
             $this->email = $objDados->email;
             $this->password = $objDados->password;
             $this->phone = $objDados->phone;
-            //$this->status = $objDados->status;
             $this->status = intval($objDados->status);
             $this->created_at = $date->format('Y-m-d H:i:s');
             $this->updated_at = $date->format('Y-m-d H:i:s');
         }
 
-        public function insertStudent($dados) 
-        {
+        public function insertStudent($dados) {
             $this->setDados($dados);
             try {
                 $sql = "INSERT INTO students(name, email, password, phone, status, created_at, updated_at) 
@@ -56,8 +50,7 @@
             return true;
         }
 
-        public function updateStudent($dados, $id)
-        {
+        public function updateStudent($dados, $id) {
             $this->setDados($dados);
             try {
                 $sql = "UPDATE students SET name = :name, email = :email, password = :password, phone = :phone, status = :status, updated_at = :updated_at WHERE id = :id";
@@ -80,8 +73,7 @@
         }
 
 
-        public function getStudents() 
-        {
+        public function getStudents() {
             try {
                 $query = "SELECT * FROM students";
                 $con = $this->pdo->prepare($query);
@@ -89,14 +81,11 @@
             } catch(PDOException $e) {
                 echo $e->getMessage();
             }
-            
-            
             $result = $con->fetchAll(PDO::FETCH_ASSOC);
             return json_encode($result);
         }
 
-        public function getStudent($id) 
-        {
+        public function getStudent($id) {
             $query = "SELECT * FROM students WHERE id = :id";
             $con = $this->pdo->prepare($query);
             $con->bindParam(':id', $id);
@@ -106,8 +95,7 @@
             return json_encode($result);
         }
 
-        public function deleteStudent($id) 
-        {
+        public function deleteStudent($id) {
             $query = "DELETE FROM students WHERE id = :id";
             $con = $this->pdo->prepare($query);
             $con->bindParam(':id', $id);
