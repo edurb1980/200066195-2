@@ -6,7 +6,7 @@
         }
 
         private function connection() {
-            $dns = 'mysql:dbname=ra200546375;host=localhost';
+            $dns = 'mysql:dbname=ra200066195;host=localhost';
             $userName = 'root';
             $password = '';
             try {

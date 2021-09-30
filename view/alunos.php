@@ -10,10 +10,9 @@
     }
 ?>
 
-
-    <h1>Alunos do Sistema</h1>
+    <h1>Listagem de Alunos</h1>
     <div class="content">
-        <a href="?p=novo-aluno" class="btn btn-primary">Adicionar Novo Aluno</a>
+        <a href="?p=novo-aluno" class="btn btn-primary">+ Novo</a>
         <?php if($mensagem != ''): ?>
             <div class="alert alert-<?=$_GET['tipo'];?>">
                 <?= $mensagem; ?>
@@ -29,7 +28,6 @@
                 </tr>
             </thead>
             <tbody>
-                
                 <?php foreach($alunos as $a): ?>
                 <tr>
                     <td><?= $a->id; ?></td>

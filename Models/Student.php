@@ -2,12 +2,21 @@
     require('Config.php');
     class Student extends Config {
 
-        private $id, $name, $email, $password, $phone, $status, $created_at, $updated_at;
+        private $id;
+        private $name;
+        private $email;
+        private $password;
+        private $phone;
+        private $status;
+        private $created_at;
+        private $updated_at;
 
         public function __construct() 
         {
             parent::__construct();
         }
+
+        // implementar geters e seters
 
         private function setDados($dados) 
         {
@@ -17,6 +26,7 @@
             $this->email = $objDados->email;
             $this->password = $objDados->password;
             $this->phone = $objDados->phone;
+            //$this->status = $objDados->status;
             $this->status = intval($objDados->status);
             $this->created_at = $date->format('Y-m-d H:i:s');
             $this->updated_at = $date->format('Y-m-d H:i:s');
@@ -26,7 +36,8 @@
         {
             $this->setDados($dados);
             try {
-                $sql = "INSERT INTO student(name, email, password, phone, status, created_at, updated_at) VALUES(:name, :email, :password, :phone, :status, :created_at, :updated_at)";
+                $sql = "INSERT INTO students(name, email, password, phone, status, created_at, updated_at) 
+                        VALUES(:name, :email, :password, :phone, :status, :created_at, :updated_at)";
                 $con = $this->pdo->prepare($sql);
                 $con->bindParam(':name', $this->name);
                 $con->bindParam(':email', $this->email);
@@ -49,7 +60,7 @@
         {
             $this->setDados($dados);
             try {
-                $sql = "UPDATE student SET name = :name, email = :email, password = :password, phone = :phone, status = :status, updated_at = :updated_at WHERE id = :id";
+                $sql = "UPDATE students SET name = :name, email = :email, password = :password, phone = :phone, status = :status, updated_at = :updated_at WHERE id = :id";
                 $con = $this->pdo->prepare($sql);
                 $con->bindParam(':name', $this->name);
                 $con->bindParam(':email', $this->email);
@@ -72,7 +83,7 @@
         public function getStudents() 
         {
             try {
-                $query = "SELECT * FROM student";
+                $query = "SELECT * FROM students";
                 $con = $this->pdo->prepare($query);
                 $con->execute();
             } catch(PDOException $e) {
@@ -86,7 +97,7 @@
 
         public function getStudent($id) 
         {
-            $query = "SELECT * FROM student WHERE id = :id";
+            $query = "SELECT * FROM students WHERE id = :id";
             $con = $this->pdo->prepare($query);
             $con->bindParam(':id', $id);
             $con->execute();
@@ -95,9 +106,9 @@
             return json_encode($result);
         }
 
-        public function excluirStudent($id) 
+        public function deleteStudent($id) 
         {
-            $query = "DELETE FROM student WHERE id = :id";
+            $query = "DELETE FROM students WHERE id = :id";
             $con = $this->pdo->prepare($query);
             $con->bindParam(':id', $id);
             $result = $con->execute();

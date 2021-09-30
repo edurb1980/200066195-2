@@ -1,16 +1,16 @@
 <?php
-require('./Models/Student.php');
-$aluno = new Student();
-if(isset($_GET['id']) && !empty($_GET['id']) ) {
-    $id = $_GET['id'];
-    $obj = $aluno->getStudent($id);
-    $obj = json_decode($obj);
-    $created_at = new DateTime($obj->created_at);
-    $updated_at = new DateTime($obj->updated_at);($obj->created_at);
-    if(empty($obj)) {
-        header("Location: ?p=alunos");
+    require('./Models/Student.php');
+    $aluno = new Student();
+    if(isset($_GET['id']) && !empty($_GET['id']) ) {
+        $id = $_GET['id'];
+        $obj = $aluno->getStudent($id);
+        $obj = json_decode($obj);
+        $created_at = new DateTime($obj->created_at);
+        $updated_at = new DateTime($obj->updated_at);($obj->created_at);
+        if(empty($obj)) {
+            header("Location: ?p=alunos");
+        }
     }
-}
 ?>
 
 <h1>Aluno <?= $obj->name; ?></h1>
@@ -47,6 +47,5 @@ if(isset($_GET['id']) && !empty($_GET['id']) ) {
                 <p><?= $updated_at->format('d/m/Y H:i:s') ; ?></p>
             </div>
         </div>
-    </div>
-    
+    </div>    
 </div>
