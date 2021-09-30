@@ -1,0 +1,30 @@
+body {
+    background-color: rgb(238, 246, 253);
+}
+
+h1 {
+    text-align: center;
+}
+
+.content, .content-login {
+    margin-top: 25px;
+}
+
+.content-login {
+    padding: 50px 50px;
+    margin: 0 30%;
+    border: 1px solid #000;
+    border-radius: 15px;
+}
+
+.form-group {
+    margin-top:20px;
+}
+
+label {
+    font-weight: bold;
+}
+
+.card {
+    box-shadow: 1px 1px 1px 1px rgb(167, 167, 167);
+}
